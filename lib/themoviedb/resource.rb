@@ -23,14 +23,14 @@ module Tmdb
     def self.detail(id, conditions={})
       search = Tmdb::Search.new("/#{self.endpoints[:singular]}/#{self.endpoint_id + id.to_s}")
       search.filter(conditions)
-      self.new(search.fetch_response)
+      search.fetch_response
     end
 
     def self.list(conditions={})
       search = Tmdb::Search.new("/#{self.endpoints[:plural]}")
       search.filter(conditions)
       search.fetch.collect do |result|
-        self.new(result)
+        result
       end
     end
     
@@ -39,7 +39,7 @@ module Tmdb
       search.resource("#{self.endpoints[:singular]}")
       search.query(query)
       search.fetch.collect do |result|
-        self.new(result)
+        result
       end
     end
     
