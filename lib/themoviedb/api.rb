@@ -34,5 +34,13 @@ module Tmdb
       @@response = hash
     end
 
+    def self.append_to_response(methods)
+      if (methods.nil?)
+        self.config.delete(:append_to_response)
+      else
+        self.config[:append_to_response] = methods
+      end
+    end
+
   end
 end
