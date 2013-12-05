@@ -42,5 +42,9 @@ module Tmdb
       end
     end
 
+    def self.debug_on
+      debug_output $stdout
+    end
+
   end
 end
