@@ -11,6 +11,16 @@ module Tmdb
       self
     end
 
+    def year(year)
+      @params[:year] = "#{year}"
+      self
+    end
+
+    def primary_realease_year(year)
+      @params[:primary_release_year] = "#{year}"
+      self
+    end
+
     def resource(resource)
       if resource == 'movie' then
         @resource = '/search/movie'
@@ -35,6 +45,8 @@ module Tmdb
         conditions.each do |key, value|
           if self.respond_to?(key)
             self.send(key, value)
+          else
+            @params[key] = value
           end
         end
       end

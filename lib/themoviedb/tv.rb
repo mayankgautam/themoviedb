@@ -7,7 +7,6 @@ module Tmdb
       :backdrop_path,
       :created_by,
       :episode_run_time,
-      :genres,
       :first_air_date,
       :genres,
       :homepage,
@@ -16,7 +15,7 @@ module Tmdb
       :languages,
       :last_air_date,
       :name,
-      :network,
+      :networks,
       :number_of_episodes,
       :number_of_seasons,
       :original_name,
@@ -29,7 +28,7 @@ module Tmdb
       :vote_average,
       :vote_count
     ]
-    
+
     @@fields.each do |field|
       attr_accessor field
     end
@@ -43,6 +42,13 @@ module Tmdb
     #Get the list of top rated TV shows. By default, this list will only include TV shows that have 2 or more votes. This list refreshes every day.
     def self.top_rated
       search = Tmdb::Search.new("/tv/top_rated")
+      search.fetch
+    end
+
+    #Discover TV shows by different types of data like average rating, number of votes, genres, the network they aired on and air dates
+    def self.discover(conditions={})
+      search = Tmdb::Search.new("/discover/tv")
+      search.filter(conditions)
       search.fetch
     end
 
