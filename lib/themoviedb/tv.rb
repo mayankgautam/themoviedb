@@ -76,5 +76,11 @@ module Tmdb
       search.fetch_response
     end
 
+    #Get the translations for a specific TV series.
+    def self.translations(id, conditions={})
+      search = Tmdb::Search.new("/#{self.endpoints[:singular]}/#{self.endpoint_id + id.to_s}/translations")
+      search.fetch_response
+    end
+
   end
 end
