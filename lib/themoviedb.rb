@@ -5,6 +5,6 @@ require 'httparty'
   require File.join(File.dirname(__FILE__), "themoviedb", inc)
 end
 
-["movie", "tv", "season", "episode", "collection", "people", "company", "genre"].each do |inc|
+["movie", "tv", "season", "episode", "collection", "people", "company", "genre", "find"].each do |inc|
   require File.join(File.dirname(__FILE__), "themoviedb", inc)
 end
